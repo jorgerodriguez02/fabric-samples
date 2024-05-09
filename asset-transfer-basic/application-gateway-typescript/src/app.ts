@@ -152,19 +152,28 @@ async function getAllAssets(contract: Contract): Promise<void> {
  * Submit a transaction synchronously, blocking until it has been committed to the ledger.
  */
 async function createAsset(contract: Contract): Promise<void> {
-    console.log('\n--> Submit Transaction: CreateAsset, creates new asset with ID, Color, Size, Owner and AppraisedValue arguments');
+    console.log('\n--> Submit Transaction: CreateAsset, creates new asset with ID, FechaCosecha, FechaRecoleccion, LugarCosecha, VariedadFruta, SesionesRiego, SesionesAbonado, Fertilizantes, Plaguicidas, Peso, ClienteDestino, Agricultor and docType arguments');
 
     await contract.submitTransaction(
         'CreateAsset',
         assetId,
-        'yellow',
-        '5',
-        'Tom',
-        '1300',
+        '2024-05-09',
+        '2024-05-10',
+        'Lugar',
+        'Variedad',
+        '5', // SesionesRiego
+        '3', // SesionesAbonado
+        'Fertilizantes',
+        'Plaguicida1',
+        '100', // Peso
+        'Cliente1',
+        'Agricultor1',
+        'Asset',
     );
 
     console.log('*** Transaction committed successfully');
 }
+
 
 /**
  * Submit transaction asynchronously, allowing the application to process the smart contract response (e.g. update a UI)
@@ -174,11 +183,11 @@ async function transferAssetAsync(contract: Contract): Promise<void> {
     console.log('\n--> Async Submit Transaction: TransferAsset, updates existing asset owner');
 
     const commit = await contract.submitAsync('TransferAsset', {
-        arguments: [assetId, 'Saptha'],
+        arguments: [assetId, 'NewOwner'],
     });
     const oldOwner = utf8Decoder.decode(commit.getResult());
 
-    console.log(`*** Successfully submitted transaction to transfer ownership from ${oldOwner} to Saptha`);
+    console.log(`*** Successfully submitted transaction to transfer ownership from ${oldOwner} to NewOwner`);
     console.log('*** Waiting for transaction commit');
 
     const status = await commit.getStatus();
