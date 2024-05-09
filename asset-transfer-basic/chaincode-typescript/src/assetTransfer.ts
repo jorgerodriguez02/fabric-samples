@@ -39,7 +39,7 @@ export class AssetTransferContract extends Contract {
                 Plaguicidas: 'PlagA',
                 Peso: 100,
                 ClienteDestino: 'Distribuidor XYZ',
-                Agricultor: 'Agricultor1'
+                Agricultor: 'Jorge'
             },
             {
                 ID: 'asset2',
@@ -53,7 +53,7 @@ export class AssetTransferContract extends Contract {
                 Plaguicidas: 'PlagC',
                 Peso: 80,
                 ClienteDestino: 'Distribuidor ABC',
-                Agricultor: 'Agricultor2'
+                Agricultor: 'Pablo'
             }
         ];
 
